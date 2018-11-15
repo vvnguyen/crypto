@@ -1,0 +1,49 @@
+				Cryptocurrency Preliminary Research
+				Algorytmika, Wiktor Nguyen
+				15.11.2018 Warsaw 
+				nguyenwiktor@gmail.com
+
+	Purpose of this document is initial brief analysis of cryptocurrencies including economical and technical aspects covered briefly with focus on most important aspects rather than in depth. Furthermore this is intended as simple point of reference to easly get started for anyone who has no knowledge about cryptocurrencies whatsoever.
+
+Definitions
+
+Cryptocurrency is digital currency in which encryption is used to generate units of currency and to verify transactions. In other words it is currency implemented by software.
+
+ICO is shortcut for Initial Coin Offering. Initial Coin Offering is first, public offering of digital tokens of crytpocurrency. Often it is offered with discount price. Until recently those offers where not regulated by law.
+
+Market
+Size
+Currently value of ICOs lounched is around 4bn$ according to EY report [2].
+Market size for 100 most popular crytpocurrencies is estimated at 121 bn$. [3] Total market size is estimated at 
+400bn$. [4] There are over 1000 different cryptocurrencies according to Incrementum AG report.[5] More recent estimates put that number at closer to 2000.[6] Most of capital for ICO goes to United States, Russia, Singapure and China.[2] Most popular cryptocurrencies by market cap are: Bitcoin, Ehtereum, Litecoin and Ripple.
+
+Returns
+Bitcoin price was $0.008 in may 2010 and as of november 2018 is over 6000$. 
+Highest price for bitcoin was around 20000$. Ethereum price was less than 1$ in 2015 and as of november 2018 is around 200$. Ripple price was around 0,004$ in 2013 and as of november 2018 is around 0,5$. Cryptocurrency with largest return on investment is Next(nxt) with return on invetment 598054%.
+
+Risks
+According to Satis Group report 78% of ICOs where identified as scams, 4% failed  and 3% has gone dead. Hovewer less then 1/10 of money went to scam ICOs.[7] Another study established that half of cryptocurrency projects last only about 4 months.[8] According to Wall Street Journal there where 56 cyberattacks on cryptocurrency exchanges, initial coin offerings and other digital currency platforms.[9] In the first half of 2018 more than 760 millions of dolars in cryptocurrency where stolen from exchanges. Assuming 4bn $ of market caps for crypto this is around 20% of whole market.
+
+Cryptocurrencies are very volatile as noted by Bank of International Settlements  2018 report [10]. Daily price can change up to 10%. By comparison fiat currencies change is few percent per month. Cryptocurrencies seems to be unreleated to macroeconomic factors. [11]
+
+Technology
+Database is organisation of data in computer in a way that allows its fast access and processing and appeared around 1960s. First databases where centralised: system used one main server or other device that stored and managed all data and multiple clients or terminals that could use data stored by server.[12] One of the first was Charles W. Bachman Integrated Database System, proposed  in 1960s. In mid 1970s first distributed databases where introduced including Australian Department of Defense database.[13] In 1981 distributed data system architecture was proposed in scientific article. [14] This was system where part of data could be stored in one place and different part on another. Later came idea how to ensure that data wont be modified easly. It has been published in 1991 by S.Haber.[15] In 1998 coinfinity later known as PayPal-company to send money online, have been established. Also in 1998 Nick Shabo introduced concept of smart contracts.[16] In 2009 Bitcoin – most popular cryptocurrency have been introduced.[17] In 2015 concept of DAG cryptocurrency have been published. [18]
+
+[1] https://www.investopedia.com/terms/c/cryptocurrency.asp
+[2] https://www.ey.com/Publication/vwLUAssets/ey-research-initial-coin-offerings-icos/$File/ey-research-initial-coin-offerings-icos.pdf
+[3]
+[4] https://forum.gipsyteam.ru/index.php?act=attach&type=post&id=566108
+[5] https://cryptoresearch.report/wp-content/uploads/2017/12/Incrementum-Crypto-Research-Report-Edition-1-English-Version.pdf
+[6] https://www.forbes.com/sites/bernardmarr/2017/09/15/blockchain-bitcoin-cryptocurrency-and-icos-all-you-need-to-know-in-10-minutes/#6b2227e16c55
+[7] https://research.bloomberg.com/pub/res/d37g1Q1hEhBkiRCu_ruMdMsbc0A
+[8] https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3182169
+[9] https://www.wsj.com/articles/why-cryptocurrency-exchange-hacks-keep-happening-1531656000
+[10] https://www.bis.org/publ/arpdf/ar2018e5.pdf
+[11] https://www.nber.org/papers/w24877.pdf
+[12]
+[13] https://www.springer.com/gp/book/9781447156000
+[14] https://www.sciencedirect.com/science/article/pii/0140366481901742
+[15] https://www.anf.es/pdf/Haber_Stornetta.pdf
+[16] http://unenumerated.blogspot.com/2005/12/bit-gold.html
+[17] https://bitcoin.org/bitcoin.pdf
+[18] https://bitslog.files.wordpress.com/2015/09/dagcoin-v41.pdf
