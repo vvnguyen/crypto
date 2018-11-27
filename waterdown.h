@@ -4,7 +4,9 @@
 #include <random>
 //Text encryption based on pseudorandom numbers generator
 //https://pdfs.semanticscholar.org/6f1e/616cfa562826eee6188dc9caffbe4bcf8d66.pdf
-
+//Used Visual Studio 2017 to compile
+//https://msdn.microsoft.com/en-us/library/bb982250.aspx states random_device generated numbers
+//in visual studio are non-deterministic and cryptographically secure
 using namespace std;
 
 namespace waterdown {
@@ -13,9 +15,9 @@ namespace waterdown {
 	const size_t maximum_text_length = 16;
 	const size_t password_length = 64; //this is in quadruplets of chars that is 64 for example means 4*64 = 256 char long password
 
-	char random_char() {
+	symbol random_symbol() {
 		static std::random_device rd;
-		return rd();
+		return <symbol>rd();
 	}
 
 	bool encrypt(vector<symbol>& plain_text, vector<symbol>& encrypted_text, int key[password_length + 1]) {
@@ -29,7 +31,7 @@ namespace waterdown {
 
 		vector<symbol> mask(text_length);
 		for (int i = 0;i < text_length;++i) {
-			mask[i] = random_char();
+			mask[i] = random_symbol();
 		}
 
 		try {
@@ -57,7 +59,7 @@ namespace waterdown {
 				std::uniform_int_distribution<int> dis(0, up + text_length);
 				int insert_index = dis(mt_rand);
 
-				char rchar = random_char();
+				char rchar = random_symbol();
 				try {
 					encrypted_text.insert(encrypted_text.begin() + insert_index, rchar);
 				}
