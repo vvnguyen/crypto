@@ -31,7 +31,7 @@ bool encrypt(vector<symbol>& plain_text, vector<symbol>& encrypted_text, int key
 	for (int i = 0;i < text_length;++i) {
 		mask[i] = random_char();
 	}
-	//cout << "\n";
+	
 	try {
 		encrypted_text.resize(extended_size);
 	}
