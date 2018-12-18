@@ -12,11 +12,11 @@ static const int size_of_alphabet = 256;
 
 namespace waterdown {
 	//Encryption is process of converting data to unrecognizable form
-	typedef unsigned int symbol;
+	typedef uint8_t symbol;
 	const size_t maximum_text_length = 1024;// 90 * 1024;
 	const size_t password_length = 256;//64; //this is in quadruplets of chars that is 64 for example means 4*64 = 256 char long password
 	const size_t extended_size = maximum_text_length * size_of_alphabet * 2;//90 * 1024 * 1024;
-	const size_t mask_size = 16;
+	const size_t mask_size = 32;
 	symbol random_char() {
 		return get_entrophy(32);
 	}
@@ -30,7 +30,7 @@ namespace waterdown {
 		const size_t text_length = plain_text.size();
 
 		vector<symbol> mask(text_length);
-		for (int i = 0; i < text_length; ++i) {
+		for (unsigned int i = 0; i < text_length; ++i) {
 			mask[i] = random_char();
 		}
 
@@ -50,17 +50,17 @@ namespace waterdown {
 		encrypted_text = plain_text;
 
 		int mask_index = 0;
-		for (int i = 0; i < encrypted_text.size(); ++i) {
-			for (int j = 0; j < mask_size; ++j) {
+		for (unsigned int i = 0; i < encrypted_text.size(); ++i) {
+			for (unsigned int j = 0; j < mask_size; ++j) {
 				encrypted_text[i] ^= mask[mask_index];
 				++mask_index;
 			}
 		}
 		int up = 0;
 
-		for (int key_part_index = 0; key_part_index < password_length; ++key_part_index) {
+		for (unsigned int key_part_index = 0; key_part_index < password_length; ++key_part_index) {
 			mt19937 mt_rand(key[key_part_index]);
-			for (int i = 0; i < part_size; ++i) {
+			for (unsigned int i = 0; i < part_size; ++i) {
 				std::uniform_int_distribution<int> dis(0, up + text_length);
 				int insert_index = dis(mt_rand);
 
@@ -77,7 +77,7 @@ namespace waterdown {
 		}
 
 		mt19937 mt_rand(key[password_length]);
-		for (int ins = 0; ins < text_length*mask_size; ++ins) {
+		for (unsigned int ins = 0; ins < text_length*mask_size; ++ins) {
 			std::uniform_int_distribution<int> dis(0, up + text_length);
 			int insert_index = dis(mt_rand);
 			encrypted_text.insert(encrypted_text.begin() + insert_index, mask[ins]);
@@ -101,7 +101,7 @@ namespace waterdown {
 			return false;
 		}
 		int up = 0;
-		vector<int> indexes_elements_to_be_removed;
+		vector<unsigned int> indexes_elements_to_be_removed;
 		vector<symbol> mask(text_length);
 		for (int key_part_index = 0; key_part_index < password_length; ++key_part_index) {
 			mt19937 mt_rand(key[key_part_index]);
@@ -117,7 +117,7 @@ namespace waterdown {
 		mt19937 mt_rand(key[password_length]);
 
 		vector<int>mask_location(text_length*mask_size);
-		for (int ins = 0; ins < text_length*mask_size; ++ins) {
+		for (unsigned int ins = 0; ins < text_length*mask_size; ++ins) {
 			std::uniform_int_distribution<int> dis(0, up + text_length);
 			int insert_index = dis(mt_rand);
 			mask_location[ins] = insert_index;
@@ -136,8 +136,8 @@ namespace waterdown {
 		}
 
 		int mask_index = 0;
-		for (int k = 0; k < text_length; ++k) {
-			for (int j = 0; j < mask_size; ++j) {
+		for (unsigned int k = 0; k < text_length; ++k) {
+			for (unsigned int j = 0; j < mask_size; ++j) {
 				encrypted_text[k] ^= mask[mask_index];
 				++mask_index;
 			}
