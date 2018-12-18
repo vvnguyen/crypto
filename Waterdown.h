@@ -116,8 +116,8 @@ namespace waterdown {
 
 		mt19937 mt_rand(key[password_length]);
 
-		vector<int>mask_location(text_length);
-		for (int ins = 0; ins < text_length; ++ins) {
+		vector<int>mask_location(text_length*mask_size);
+		for (int ins = 0; ins < text_length*mask_size; ++ins) {
 			std::uniform_int_distribution<int> dis(0, up + text_length);
 			int insert_index = dis(mt_rand);
 			mask_location[ins] = insert_index;
@@ -135,8 +135,12 @@ namespace waterdown {
 			encrypted_text.erase(encrypted_text.begin() + indexes_elements_to_be_removed[i]);
 		}
 
+		int mask_index = 0;
 		for (int k = 0; k < text_length; ++k) {
-			encrypted_text[k] ^= mask[k];
+			for (int j = 0; j < mask_size; ++j) {
+				encrypted_text[k] ^= mask[mask_index];
+				++mask_index;
+			}
 		}
 		return true;
 	}
