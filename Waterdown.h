@@ -59,7 +59,7 @@ namespace waterdown {
 		int up = 0;
 
 		for (unsigned int key_part_index = 0; key_part_index < password_length; ++key_part_index) {
-			mt19937 mt_rand(key[key_part_index]);
+			mt19937 mt_rand(key[key_part_index]);//Mersene twister is not crypthographicly secure but its easy to use in C++
 			for (unsigned int i = 0; i < part_size; ++i) {
 				std::uniform_int_distribution<int> dis(0, up + text_length);
 				int insert_index = dis(mt_rand);
@@ -76,7 +76,7 @@ namespace waterdown {
 			}
 		}
 
-		mt19937 mt_rand(key[password_length]);
+		mt19937 mt_rand(key[password_length]);//Mersene twister is not crypthographicly secure but its easy to use in C++
 		for (unsigned int ins = 0; ins < text_length*mask_size; ++ins) {
 			std::uniform_int_distribution<int> dis(0, up + text_length);
 			int insert_index = dis(mt_rand);
