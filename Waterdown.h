@@ -14,11 +14,11 @@ namespace waterdown {
 	//Encryption is process of converting data to unrecognizable form
 	typedef uint8_t symbol;
 	const size_t maximum_text_length = 1024;// 90 * 1024;
-	const size_t password_length = 256;//64; //this is in quadruplets of chars that is 64 for example means 4*64 = 256 char long password
+	const size_t password_length = 256;
 	const size_t extended_size = maximum_text_length * size_of_alphabet * 2;//90 * 1024 * 1024;
 	const size_t mask_size = 32;
 	symbol random_char() {
-		return get_entrophy(32);
+		return get_entrophy(8);
 	}
 
 	bool encrypt(vector<symbol>& plain_text, vector<symbol>& encrypted_text, int key[password_length + 1]) {
@@ -29,7 +29,7 @@ namespace waterdown {
 		const size_t part_size = extended_size / password_length;
 		const size_t text_length = plain_text.size();
 
-		vector<symbol> mask(text_length);
+		vector<symbol> mask(text_length*mask_size);
 		for (unsigned int i = 0; i < text_length; ++i) {
 			mask[i] = random_char();
 		}
@@ -59,7 +59,7 @@ namespace waterdown {
 		int up = 0;
 
 		for (unsigned int key_part_index = 0; key_part_index < password_length; ++key_part_index) {
-			mt19937 mt_rand(key[key_part_index]);//Mersene twister is not crypthographicly secure but its easy to use in C++
+			mt19937 mt_rand(key[key_part_index]);
 			for (unsigned int i = 0; i < part_size; ++i) {
 				std::uniform_int_distribution<int> dis(0, up + text_length);
 				int insert_index = dis(mt_rand);
@@ -76,7 +76,7 @@ namespace waterdown {
 			}
 		}
 
-		mt19937 mt_rand(key[password_length]);//Mersene twister is not crypthographicly secure but its easy to use in C++
+		mt19937 mt_rand(key[password_length]);
 		for (unsigned int ins = 0; ins < text_length*mask_size; ++ins) {
 			std::uniform_int_distribution<int> dis(0, up + text_length);
 			int insert_index = dis(mt_rand);
@@ -92,7 +92,8 @@ namespace waterdown {
 		vector<int> index;
 		size_t text_length = encrypted_text.size();
 		text_length -= extended_size;
-		text_length /= 2;
+		text_length /= (mask_size + 1);
+
 		try {
 			index.resize(part_size);
 		}
@@ -102,7 +103,7 @@ namespace waterdown {
 		}
 		int up = 0;
 		vector<unsigned int> indexes_elements_to_be_removed;
-		vector<symbol> mask(text_length);
+		vector<symbol> mask(text_length*mask_size);
 		for (int key_part_index = 0; key_part_index < password_length; ++key_part_index) {
 			mt19937 mt_rand(key[key_part_index]);
 
@@ -123,7 +124,7 @@ namespace waterdown {
 			mask_location[ins] = insert_index;
 			++up;
 		}
-		for (int rem = (text_length - 1); rem >= 0; --rem) {
+		for (int rem = (text_length *mask_size -1); rem >= 0; --rem) {
 			mask[rem] = encrypted_text[mask_location[rem]];
 			encrypted_text.erase(encrypted_text.begin() + mask_location[rem]);
 		}
